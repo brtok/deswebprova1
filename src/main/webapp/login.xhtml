@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="./WEB-INF/templates/principal.xhtml">
+
+    <ui:define name="styles">
+        <link href="./css/inscricao.css" rel="stylesheet" type="text/css" />
+    </ui:define>
+
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="javascript">
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="form">
+            <div class="titulo-form">LOGIN</div>
+            <h:panelGroup styleClass="form-block" layout="block">
+                <h:outputLabel value="Usuário" style="display: inline-block; width: 50px"/>
+                <h:inputText id="usuario" value="#{loginBean.login}" required="true"/>
+            </h:panelGroup>
+            <h:panelGroup styleClass="form-block" layout="block">
+                <h:outputLabel value="Senha" style="display: inline-block; width: 50px"/>
+                <h:inputSecret id="senha" value="#{loginBean.senha}" required="true"/>
+            </h:panelGroup>
+            <h:panelGroup styleClass="form-block" layout="block">
+                <h:selectBooleanCheckbox id="opadmin" value="#{loginBean.administrador}"/>
+                <h:outputText value="Administrador"/>
+            </h:panelGroup>
+            <h:commandButton value="Entrar" action="#{loginBean.acaoLogin}"/>
+            <h:messages/>
+            <div style="margin: 1em 0; color: red">#{empty loginBean.result ? "" : "Acesso negado"}</div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
